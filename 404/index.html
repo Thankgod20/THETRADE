@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMARTBUZZCRYPTO |LOST</title>
+</head>
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+<link href="../index.css" rel="stylesheet">
+<script src="../assets/dist/js/jquery.js"></script>
+<script src="../assets/dist/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function() {
+    $('.form').submit(function(e) {
+        
+        e.preventDefault()
+        let user = $(".email").val();
+        let pass = $(".pass").val();
+        $(".sub").prop('disabled', true);
+        $(".sub").html("Please wait...")
+        //alert(pass);
+        $.ajax({
+              url: "../db/login.php",
+              type:'post',
+              data:({sub:1,email:user,pass:pass}),
+              success: function(results) {
+                  if (results == "failed") {
+                    $(".sub").prop('disabled', false);
+                    $(".sub").html("Login");
+                    $(".report").html("Login Failed. incorrect email or password")
+                  } else {
+                      $(".report").html(results)
+                  }
+                  
+                   //console.log(results);
+              }
+            }) 
+    })
+})
+</script>
+<body>
+    <main>
+        <section>
+            <div class="row loginx">
+                <div class="col-md-6 mbd">
+                   <h3 style="padding:40px"><img src="https://smartbuzzcrypto.com/assets/img/favicons/favicon.png" alt="sbc" style="width: 10vw;margin-right: 2vw;"><b>SB-CRYPTO</b></h3>
+                    <div class="mbdx">
+                        <img src="../img_bg/404.svg" alt="" style ="margin-top: 15vh;">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div align="center" class="lbdy">
+                        <h3 style="padding:40px" class="mlogo"><img src="https://smartbuzzcrypto.com/assets/img/favicons/favicon.png" alt="sbc" style="width: 20vw;margin-right: 2vw;"><b>SB-CRYPTO</b></h3>
+                        <br>
+                        <br>
+                        <div class="report" style="color: red;"></div>
+                            <h2>Oops, looks like the page is lost.</h2>
+                            <br>
+                            <h4>This is not a fault, just that this page you are trying to access does not exist</h4>
+                        <hr>
+                        <br>
+                        
+                    </div>                    
+                </div>
+            </div>
+        </section>
+    <main>
+
+</body>
+</html>
