@@ -29,7 +29,7 @@ nav form a {
     margin-left: 5%;
 }
 .dash-bg {
-    background-color: #0c0e20;
+    background-color: #131722;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -42,8 +42,8 @@ nav form a {
 }
 /*body*/
 .modal-content{
-    background-color: #a7a7ff;
-    color: black;
+    background-color: #0a0b11;
+    color: white;
     margin-top: 30vh;
 }
 .modal-header{
@@ -116,7 +116,7 @@ li {
     display: block !important;
     white-space: nowrap;
 }
-.footertext {s
+.footertext {
     font-size: 10px;
 }
 h5 {
@@ -140,7 +140,7 @@ span {
     margin-left: 30px;
 }
 .dashnav {
-    background-color: #26264d !important;
+    background-color: #131722 !important;
 }
 .dashnav a {
     color: white;
@@ -152,19 +152,30 @@ span {
     width: 100vw;
     margin: 0 !important;
 }
-.cntrl input {
+.cntrl .input {
     width:100%;
-    background-color: #171b3d;
-    border: 1px;
-    height: 35px;
+    background-color: #131722;
+    border: 1px solid #262a37;
+   
     border-radius: 5px;
     color: white;
-    padding: 40px;
-    font-size: 25px;
+    
+    font-size: 15px;
+    margin: 0px;
+}
+.cntrl input {
+    width:90%;
+    background-color: #131722;
+    border: 1px;
+   
+    border-radius: 5px;
+    color: white;
+    
+    font-size: 15px;
 }
 .cntrl ul {
     padding: 20px;
-    background-color: #26264d;
+    background-color: #1e222e;
     width: 100%;
 }
 .cntrl ul li {
@@ -174,13 +185,13 @@ span {
 .cntrl .dropdown button {
     width: 100%;
     border-radius: 5px !important;
-    background-color: #171b3d;
+    background-color: #1e222e;
     border: 1px;
     height: 35px;
     color: white;
 }
 .cntrl .bal {
-    border-bottom: 2px solid #26264d;
+    border-bottom: 2px solid #1e222e;
 }
 .cntrl .bal h4 {
     color: white;
@@ -193,15 +204,23 @@ span {
     align-items: center;
 }
 .cntrl .buy {
-    background-color:green;
+    background-color:green !important;
     border-radius: 5px !important;
 }
 .cntrl .sell {
-    background-color: red;
+    background-color: red !important;
+    border-radius: 5px !important;
+}
+.cntrl .buyx {
+    background-color:green !important;
+    border-radius: 5px !important;
+}
+.cntrl .sellx {
+    background-color: red !important;
     border-radius: 5px !important;
 }
 .cntrl {
-    background-color: #0c0e20;
+    background-color: #131722;
 }
 .news div {
     height: 49px !important;
@@ -308,3 +327,12 @@ nav .navbar-brand {
     }
 
   }
+  .active-sym {
+    border:1px solid blue
+  }
+  .syms {
+   padding: 10px;
+  }
+  .syms:hover {
+    background-color: #455a64;
+   }

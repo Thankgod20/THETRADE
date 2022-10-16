@@ -1,0 +1,224 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container" style="height: 500px; min-width: 310px;width:50%;height: 50vw;"></div>
+<script>
+    const url = 'wss://stream.binance.com:9443/ws/btcusdt@depth20';
+
+const socket = new WebSocket(url);
+
+socket.onopen = function(e) {
+	console.log('opened');
+};
+
+socket.onmessage = function(event) {
+	//console.log('received', event.data);
+	loadData(JSON.parse(event.data))
+};
+
+socket.onclose = function(event) {
+	console.log(`Closed, clean ${event.wasClean} code ${event.code} reason ${event.reason}`);
+};
+
+socket.onerror = function(error) {
+	console.error(`Error ${error.message}`);
+};
+
+    var x= {
+    tickerId: "BTC_USD",
+    timestamp: 1635784328000,
+    "bids": [
+        ["8143.37000000", "0.01097800"],
+        ["8143.06000000", "0.24867600"],
+        ["8143.01000000", "6.10577200"],
+        ["8142.64000000", "0.50000000"],
+        ["8142.05000000", "9.42614100"],
+        ["8141.83000000", "3.14205700"],
+        ["8141.61000000", "5.00000000"],
+        ["8140.50000000", "0.12275800"],
+        ["8140.49000000", "0.52090500"],
+        ["8140.48000000", "0.29463200"],
+        ["8139.83000000", "0.29460400"],
+        ["8139.80000000", "0.18078300"],
+        ["8139.00000000", "0.07793600"],
+        ["8138.57000000", "0.07593500"],
+        ["8138.54000000", "0.30000000"],
+        ["8138.52000000", "0.40000000"],
+        ["8138.35000000", "0.11202400"],
+        ["8138.13000000", "0.12290600"],
+        ["8138.12000000", "0.39743800"],
+        ["8138.11000000", "0.47204500"]
+    ],
+    "asks":[
+        ["8144.57000000", "0.04478800"],
+        ["8144.58000000", "0.04911400"],
+        ["8144.60000000", "0.00659500"],
+        ["8144.61000000", "0.06710600"],
+        ["8145.00000000", "0.49175000"],
+        ["8146.99000000", "0.70697200"],
+        ["8147.00000000", "0.10000000"],
+        ["8147.22000000", "0.00500000"],
+        ["8147.50000000", "0.50000000"],
+        ["8147.61000000", "0.48849700"],
+        ["8147.62000000", "0.46056400"],
+        ["8147.63000000", "0.29471400"],
+        ["8147.64000000", "0.46662300"],
+        ["8147.65000000", "0.10700000"],
+        ["8148.04000000", "0.50000000"],
+        ["8148.64000000", "0.83144500"],
+        ["8148.66000000", "0.68263300"],
+        ["8148.98000000", "0.05112800"],
+        ["8149.00000000", "0.61265700"],
+        ["8149.08000000", "0.61202600"]
+    ]
+  }
+  var result = 0;
+result = x.bids.map(nested => nested.map(Number));
+
+//summ
+
+    for (var i=1; i<result.length; i++) {
+    let z = 1;
+  //for (var z=0; z<accc[i].length; z++) {
+    result[i][z] = result[i-1][z] + result[i][z]
+ // }
+}   
+
+
+//console.log("ss",result)
+
+loadData(x)
+function loadData(chartData) {
+    let bidss = chartData.bids.map(nested => nested.map(Number))
+    let askss = chartData.asks.map(nested => nested.map(Number))
+    for (var i=1; i<bidss.length; i++) {
+        let z = 1;
+        bidss[i][z] = bidss[i-1][z] + bidss[i][z]
+    } 
+    for (var i=1; i<askss.length; i++) {
+        let z = 1;
+        askss[i][z] = askss[i-1][z] + askss[i][z]
+    }  
+    //console.log("Ask",askss)
+    //console.log("Bid",bidss)
+    Highcharts.chart('container', {
+    chart: {
+        type: "area",
+        zoomType: "xy",
+        backgroundColor: "#1c1b2b",
+        height: 500,
+        },
+        title: {
+        text: "Market Depth",
+        style: {
+            color: "#fff",
+        },
+        },
+        xAxis: {
+        minPadding: 0,
+        maxPadding: 0,
+        plotLines: [
+            {
+            color: "#2f2952",
+            value: 0.1523,
+            width: 1,
+            label: {
+                text: "Actual price",
+                rotation: 90,
+                style: {
+                color: "#4F6C89",
+                },
+            },
+            },
+        ],
+        lineWidth: 0.1,
+        tickColor: "#1c1b2b",
+        crosshair: {
+            color: "#696777",
+            dashStyle: "dash",
+        },
+        title: {
+            text: "Price",
+            style: {
+            color: "#4F6C89",
+            },
+        },
+        },
+        yAxis: [
+        {
+            gridLineWidth: 1,
+            title: null,
+            tickWidth: 1,
+            tickLength: 5,
+            tickPosition: "inside",
+            labels: {
+            align: "left",
+            x: 8,
+            },
+            crosshair: {
+            dashStyle: "dash",
+            color: "#696777",
+            },
+            gridLineColor: "#201d3a",
+            lineWidth: 0,
+            tickColor: "#2f2952",
+        },
+        {
+            opposite: true,
+            linkedTo: 0,
+            gridLineWidth: 0,
+            title: null,
+            tickWidth: 1,
+            tickLength: 5,
+            tickPosition: "inside",
+            labels: {
+            align: "right",
+            x: -8,
+            },
+            crosshair: {
+            dashStyle: "dash",
+            color: "#696777",
+            },
+            gridLineColor: "#201d3a",
+            lineWidth: 0,
+            tickColor: "#2f2952",
+        },
+        ],
+        legend: {
+        enabled: true,
+        },
+        plotOptions: {
+        area: {
+            fillOpacity: 0.2,
+            lineWidth: 1,
+            step: "center",
+        },
+        series:  { 
+            marker:{
+            enabled:false
+            }
+        },
+        },
+        tooltip: {
+        headerFormat:
+            '<span style="font-size=10px;">Price: {point.key}</span><br/>',
+        valueDecimals: 2,
+        },
+        series: [
+        {
+            name: "Bids",
+            data: bidss,//chartData.bids.map(nested => nested.map(Number)),
+            color: "#4EA64A",
+        },
+        {
+            name: "Asks",
+            data: askss,//chartData.asks.map(nested => nested.map(Number)),
+            color: "#FB1809",
+        },
+        ],
+        credits: {
+        enabled: false,
+        },
+    }); 
+}
+
+</script>

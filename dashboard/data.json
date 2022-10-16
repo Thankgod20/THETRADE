@@ -1,0 +1,87 @@
+[
+    {
+      "type": "bid",
+      "total": 7,
+      "price": 80.1
+    },
+    {
+      "type": "bid",
+      "total": 5,
+      "price": 80.2
+    },
+    {
+      "type": "bid",
+      "total": 4.5,
+      "price": 82
+    },
+    {
+      "type": "ask",
+      "total": 1,
+      "price": 92
+    },
+    {
+      "type": "bid",
+      "total": 4,
+      "price": 82.2
+    },
+    {
+      "type": "bid",
+      "total": 4,
+      "price": 82.3
+    },
+    {
+      "type": "bid",
+      "total": 3,
+      "price": 85
+    },
+    {
+      "type": "bid",
+      "total": 2,
+      "price": 86
+    },
+    {
+      "type": "bid",
+      "total": 1,
+      "price": 87
+    },
+    {
+      "type": "ask",
+      "total": 8,
+      "price": 97
+    },
+    {
+      "type": "ask",
+      "total": 1,
+      "price": 91
+    },
+    {
+      "type": "ask",
+      "total": 1,
+      "price": 92
+    },
+    {
+      "type": "ask",
+      "total": 2,
+      "price": 93
+    },
+    {
+      "type": "ask",
+      "total": 3,
+      "price": 94
+    },
+    {
+      "type": "ask",
+      "total": 5.3241,
+      "price": 95
+    },
+    {
+      "type": "ask",
+      "total": 6,
+      "price": 96
+    },
+    {
+      "type": "ask",
+      "total": 8,
+      "price": 98
+    }
+  ]
