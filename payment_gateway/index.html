@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <link href="../index.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+    <script src="../assets/dist/js/jquery.js"></script>
+    <script src="../assets/dist/js/jquery-ui.min.js"></script>
+    <script src="./dist/web3.min.js"></script>
+    <script src="./index.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="">
+        <div class="row" style="margin-top: 5%;"> 
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" style="padding: 30px;">
+                <a class="navbar-brand" href="#"><img src="../assets/img/favicons/favicon.png" alt="sbc" style="width: 25%;margin-right: 2vw;"><b style="margin-top: 2%;font-size: 25pxpx;">STONK-BULLS</b></a>
+                <div class="brd">
+                    <div class="select">
+                        <h2>Select Payment Network</h2>
+                        <hr>
+                        <ul class="crypt-net">
+                            <li class="crypto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="./PNG/BTC.png" style="width: 90%;" alt="" srcset="">
+                                    </div>
+                                    <div class="col-10">
+                                        <h3>Bitcoin</h3>
+                                        
+                                        <h5 id="BTCUSDT">Current Price</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="crypto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="./PNG/ETH.png" style="width: 90%;" alt="" srcset="">
+                                    </div>
+                                    <div class="col-10">
+                                        <h3>Ethereum</h3>
+                                        
+                                        <h5 id="ETHUSDT">Current Price</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="crypto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="./PNG/BNB.png" style="width: 90%;" alt="" srcset="">
+                                    </div>
+                                    <div class="col-10">
+                                        <h3>Binance (BSC)</h3>
+                                        
+                                        <h5 id="BNBUSDT">Current Price</h5>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="currency">
+                        <div class="row ntw">
+                            <div class="col-2">
+                                <a href="#" class="bk-min " style="text-decoration: none;"> Back</a>
+                            </div>
+                            <div class="col-2">
+                                <img src="./PNG/BNB.png" style="width: 90%;" alt="" srcset="">
+                            </div>
+                            <div class="col-8">
+                                <h3>Binance</h3>
+                                
+                                <h5>Select currency</h5>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul class="crypt-net curry">
+                            <li class="crypto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="./PNG/BNB.png" style="width: 90%;" alt="" srcset="">
+                                    </div>
+                                    <div class="col-10">
+                                        <h3>BSC</h3>
+                                        
+                                        <h5>0.02BSC</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="crypto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="./PNG/USDT.png" style="width: 90%;" alt="" srcset="">
+                                    </div>
+                                    <div class="col-10">
+                                        <h3>USD-T</h3>
+                                        
+                                        <h5>100 USDT</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+
+                    <!-- The Payment Page-->
+                    <div class="payment">
+                        <h2 class="walletPaymet">Make Payment Now!!!</h2>
+                        <br>
+                        <h5 class="txt">Use the “Pay in wallet” button, scan the QR code, or copy and paste the payment details into your wallet.</h5>
+                        <hr>
+                        <button class="btn btn-wallet"> Pay from wallet</button>
+                        <hr>
+                        <h5 align="left" style="color: green;"><b>Time- Count-DOwn:-</b> <span class="timer"></span></h5>
+                        <br>
+                        <div class="qr-div">
+                            <img style="width:60%" src="https://api.qrserver.com/v1/create-qr-code/?data=0x77F41C2b9dA71d8C1046D81672a557E275d8F6E0&size=300x300" alt="">
+                        </div>
+                        <br>
+                        <a href="#">How to pay with qr-code</a>
+                        <hr>
+                        <div class="cpy-d">
+                            <h5 align="left"><b>Amount:</b></h5>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input type="text" inputmode="decimal" class="form-control amtt" value="20 USDT" disabled>
+                                </div>
+                                <div class="col-2">
+                                    <button class="form-control"><i class='bx bx-copy-alt'></i></button>
+                                </div>
+                                
+                            </div>
+                            <br>
+                            <h5 align="left"><b>Address:</b></h5>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input type="text" inputmode="decimal" class="form-control" id="inptAddr" value="0x77F41C2b9dA71d8C1046D81672a557E275d8F6E0" disabled>
+                                </div>
+                                <div class="col-2">
+                                    <button class="form-control"><i class='bx bx-copy-alt'></i></button>
+                                </div>
+                                
+                            </div>
+                            <hr>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="expired" >
+                        <h2 style="color:white"> Expired !!!</h2>
+                        <button class="btn exp-btn" style="width: 100%;
+                        background-color: whitesmoke;"> Go Back</button>
+                    </div>
+                    
+                </div>
+                <br>
+                    <h6>The payment is processed on behalf of the merchant that referred you to this invoice by UAB Decentralized (CoinGate). Disclaimer applies</h6>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</body>
+</html>

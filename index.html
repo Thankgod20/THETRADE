@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="Forex and CRYPTO trading with SB-Crypto is easy and secure. Innovative Forex and CRYPTO platform with live assistance.">
 <meta name="twitter:image" content="">
 
-<link rel="icon" type="image/png" href="../assets/img/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="./assets/img/favicons/favicon-32x32.png" sizes="32x32" />
 
 
     
@@ -53,30 +53,60 @@
     
     <!-- Custom styles for this template -->
     <link href="navbar-top.css" rel="stylesheet">
+
+    <script>
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            console.log(1)
+            //reveals[i].classList.add("active");
+          } else {
+            //reveals[i].classList.remove("active");
+          }
+        }
+      }
+
+    window.addEventListener("scroll", reveal);
+    </script>
   </head>
   <body>
     
 <nav class="navbar navbar-expand-md mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="https://smartbuzzcrypto.com/assets/img/favicons/favicon.png" alt="sbc" style="width: 25%;margin-right: 2vw;"><b style="margin-top: 2%;">SB-CRYPTO</b></a>
+    <b style="margin-top: 2%;font-size: 15px;position: absolute;margin-left: 44px;">STONK-BULLS</b>
+    <a class="navbar-brand" href="#"style="
+    border: 0px solid #244afc;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 7px 0px #225feb;
+    background-color: white;
+    z-index: 20;
+    margin-top: 2vh;
+"><img src="./assets/img/favicons/favicon.png" alt="sbc" style="width: 25%;margin-right: 2vw;"><b style="margin-top: 2%;font-size: 18px;">STONK-BULLS</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><i class='bx bx-menu' style="font-size: 30px;"></i></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">How to Start</a>
-          <ul class="dropdown-menu dropdown-menu-dark drop-dzn row" aria-labelledby="navbarDarkDropdownMenuLink">
+          <ul class="dropdown-menu drop-dzn row" aria-labelledby="navbarDarkDropdownMenuLink">
             <div class="row">
               <div class="col-md-6">
-                <li><h3><i class='bx bx-run' ></i><b>Start</b></h3></li>
-                <li><a class="dropdown-item" href="./register"><h4><i class='bx bxs-user-account'></i>Open Account</h4><span>Click this botton to create an account</span></a></li>
-                <li><a class="dropdown-item" href="./fund#ACCTY"><h4><i class='bx bx-user-circle' ></i>   Account type</h4><span>Types of account includes Bronze,Silver and gold</span></a></li>
-                <li><a class="dropdown-item" href="./fund"><h5><i class='bx bx-wallet-alt' ></i>   Funding</h5></a></li>    
-                <li><a class="dropdown-item" href="./fund"><h5><i class='bx bx-wallet-alt' ></i>   Withdrawal</h5></a></li>            
+                <li class="drpLst"><h3><i class='bx bx-run' ></i><b>Start</b></h3></li>
+                <li class="drpLst"><a class="dropdown-item" href="./register"><h4><i class='bx bxs-user-account'></i>Open Account</h4><span>Click this botton to create an account</span></a></li>
+                <li class="drpLst"><a class="dropdown-item" href="./fund#ACCTY"><h4><i class='bx bx-user-circle' ></i>   Account type</h4><span>Types of account includes Bronze,Silver and gold</span></a></li>
+                <li class="drpLst"><a class="dropdown-item" href="./fund"><h5><i class='bx bx-wallet-alt' ></i>   Funding</h5></a></li>    
+                <li class="drpLst"><a class="dropdown-item" href="./fund"><h5><i class='bx bx-wallet-alt' ></i>   Withdrawal</h5></a></li>            
               </div>
               <div class="col-md-6">
                 <li><h3><i class='bx bx-money' ></i>Bonus</h3></li>
@@ -105,12 +135,11 @@
     </div>
   </div>
 </nav>
-<div class="update">
+<div class="update" style="z-index: 10;">
 
   <!-- TradingView Widget BEGIN -->
   <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Markets</span></a> by TradingView</div>
+    
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
     {
     "symbols": [
@@ -157,20 +186,49 @@
   </div>
   <!-- TradingView Widget END -->
 </div>
-<main>
+<main style="overflow: hidden;">
   <section class="container">
   
     <div class="bg-light p-5 rounded">
+      <div style="
+        height: 100vh;
+    width: 99vw;
+    background-color: #e4f0f8;
+    position: fixed;
+    transform: skewY(47deg);
+    z-index: -1;
+    left: 0px;
+"></div>
       <div class="row">
-        <div class="col-md-6">    
-            <h1 class="headtext"><b>BUY THE </b><br><b>DIP NOW!!</b> </h1>
-            <p class="lead">New US customers get $5 in BTC after onboarding. Buy, sell, and store bitcoin and 100+ cryptos
+        <div style="
+   height: 60vh;
+    background-color: #e6e8f5;
+    position: absolute;
+    z-index: 1;
+    left: 4vw;
+    width: 96vw;
+    transform: skewY(349deg);
+    
+"></div>
+        <div class="col-lg-6" style="z-index: 10;">    
+            <h1 class="headtext"><b>A Better Place </b><br><b>for Traders !!</b> </h1>
+            <br>
+            <p class="lead">
+              <ul>
+                <li class="hdli">* $0 commissions for stocks, ETFs, and options
+                </li>
+                <li class="hdli">* Intuitive tools and support for traders
+                </li>
+                <li class="hdli">* Get up to 12 free stocks when you open and fund a new account
+                </li>
+              </ul>
             </p>
-            <a class="btn btn-lg btn-primary" href=./register role="button">SIGNUP &raquo;</a>
+            <br>
+            <a class="btn btn-lg btn-primary istSign" href=./register role="button" style="width: 20vw;padding:20px;border-radius:5px">SIGNUP</a>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6" style="z-index: 10;">
             <div class="mbdx">
-            <img src="../img_bg/ipad1.png" alt="" style="width: 100%;margin: 20px;transform: rotate(
+            <img src="../img_bg/ipad1.png" alt="" style="width: 150%;margin: 20px;transform: rotate(
 -3deg);">
         </div>
         </div>
@@ -185,36 +243,54 @@
     <div class="col-md-3" align="center"><img class="img" src="./sponsor/download_4.svg" alt="boomange"></div>
   </div>
   <section class="">
-  
-    <div class="bg-gray p-5 rounded">
-      <div class="row">
-        <div class="col-md-6">    
-            <h1 class="headtext2" style="margin-top: 60%;"><b>INSTANT WITHDRAWAL</b></h1>
-            <p class="lead">Withdrawal your ROI instantly into your crypto wallet address. Withdrawal into your bank account take 24hrs
+    <hr style="    height: 3px;">
+    <div class=" p-5 rounded" style="    background: white;">
+      <div class="row ">
+        <div class="col-md-4" align="center">    
+            <h1 class="headtext2 reveal" style="margin-top: 0%; font-size: 100px;transition: transform .2s;"><b>$0</b></h1>
+            <p class="lead" style="font-size: 30px;">Transaction Fee
             </p>
-            <a class="btn btn-lg btn-primary bg-btn-wht" href="./register" role="button">SIGNUP &raquo;</a>
+            
         </div>
-        <div class="col-md-6">
-          <div class="mbdx">
-            <img src="../img_bg/Onlinetransactions-pana.svg" alt="">
-        </div>
-        </div>
+        <div class="col-md-4" align="center">    
+          <h1 class="headtext2 reveal" style="margin-top: 0%; font-size: 100px;transition: transform .2s;"><b>$0</b></h1>
+          <p class="lead" style="font-size: 30px;transition: transform .2s;">Withdrawal Fee
+          </p>
+          
+      </div>
+      <div class="col-md-4" align="center">    
+        <h1 class="headtext2 reveal" style="margin-top: 0%; font-size: 100px;"><b>$100</b></h1>
+        <p class="lead" style="font-size: 30px;">Minimum Deposit
+        </p>
+        
+    </div>
+      </div>
+      <br>
+      <br>
+
+      <div>
+        <h4 style="text-align:center ;    color: gray;font-size: 20px;"><b>Margine trades upto 50x. Fast money !!!!</b></h4>
       </div>
 
     </div>
   </section>
   <section class="">
-  
+  <h2 style="text-align: center ; padding-top: 20px;"><b>Powerful, Detailed trading platforms
+        help you to trade with the whales .</b></h2>
+        <br>
+        <br>
     <div class="bg-black rounded">
-      <div class="row" style="margin: 0px !important;">
+      
+      <div class="row reveal">
+        <div class="row " style="margin: 0px !important;">
         <div class="col-md-6">
           <div class="mbdx">
-            <img src="../img_bg/Financeapp-pana.svg" alt="">
+            <img src="../img_bg/Financeapp-pana.png" alt="" style="width: 100%;margin-top: 10vh;    transform: scale(1.3);">
         </div>
         </div>
-        <div class="col-md-6" align="center">    
-            <h1 class="headtext2" style="margin-top: 60%;"><b>INSTANT DEPOSIT</b></h1>
-            <p class="lead">Deposit into your account using the following crypto <br> Bitcoin, Etherem, Bsc and Metic.
+        <div class="col-md-6" align="center" style="padding:20px;    z-index: 10;">    
+            <h1 class="headtext2" style="margin-top: 30%;"><b>Trading Dashboard</b></h1>
+            <p class="lead" style="background-color: #0b1418; padding:20px">Find, research, and make trades with our innovative tools and features. Enjoy the convenience of trading via web, tablet and app, or take advantage of our advanced desktop platform.
             </p>
             <a class="btn btn-lg btn-primary bg-btn-wht" href="https://bitcoin.com" role="button">Buy Bitcoin &raquo;</a>
         </div>
@@ -224,17 +300,20 @@
     </div>
   </section>
   <section>
+    <h2 style="background-color: white;z-index: 10;"></h2>
     <div class="bg-gray p-5 rounded">
-      <div class="row">
+      <div class="row reveal">
+        <div class="row ">
         <div class="col-md-6">    
-            <h1 class="headtext2" style="margin-top: 60%;"><b>KYC</b></h1>
-            <p class="lead">Our verification process is fast and less stressful.
+            <h1 class="headtext2" style="margin-top: 60%;"><b>Understand how Order Books and Margin Trades Works</b></h1>
+            <p class="lead"><b>Simple orders: Limit order, Market order, Stop order, Stop-Limit order, and Trailing Stop order.</b><br><br>
+              <b>Group orders: ·Stop-Loss/Take-Profit orders (Bracket orders), One-Triggers-the-Other order (OTO), One-Cancels-the-Other order (OCO), and One-Triggers-a-One-Cancels-the-Other order (OTOCO)</b>
             </p>
             <a class="btn btn-lg btn-primary bg-btn-wht" href="./register" role="button">SIGNUP &raquo;</a>
         </div>
         <div class="col-md-6">
           <div class="mbdx">
-            <img src="../img_bg/Productquality-pana.svg" alt="">
+            <img src="../img_bg/Productquality-pana.png" alt="" style="transform: rotate3d(4, 0, 1, 320deg);width:100%">
         </div>
         </div>
       </div>
@@ -243,12 +322,61 @@
   </section>
   <section>
     <div class="bg-light p-5 rounded">
-      <div class="row" align="center">
+      <div class="row reveal">
+        <div class="row " align="center">
         
-        <h1 class="headtext2"><b>An Easy Way to Trade the Financial Market</h1>
+        <h1 class="headtext2"><b>customer support and
+          knowledge building. Communicate with other traders.</b></h1>
         <p class="lead">open an account and start earning
         </p>
+        <div class="row">
+          <div class="col-lg-6">
+            <div style="" class="suppt">
+              <img src="./img_bg/female-live.jpeg" alt="" srcset="" style="width: 80%;height: 40vh;">
+              <div class="txt">
+                
+                <h2>Contact Us Now !!!</h2>
+                <br>
+                <h3>Contact a service rep to get quick response.</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div style="" class="suppt">
+              <img src="./img_bg/support_group.jpeg" alt="" srcset="" style="width: 80%;height: 40vh;">
+              <div class="txt">
+                
+                <h2>Contact Us Now !!!</h2>
+                <br>
+                <h3>Contact a service rep to get quick response.</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        
+        
+      
+      </div>
+
+    </div>
+  </section>
+  <section>
+    <hr>
+    <div class="bg-light p-5 rounded">
+      <div class="row reveal">
+        <div class="row " align="center">
+        
+        <h1 class="headtext2"><b>Join Us Now</b></h1>
+        <p class="lead">open an account and start earning
+          <br>
+          <br>
         <a class="btn btn-lg btn-primary bg-btn-wht" href="./register" role="button">SIGNUP &raquo;</a>
+        </p>
+        
+        <br>
+        
         
       
       </div>

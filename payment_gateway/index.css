@@ -1,0 +1,78 @@
+body {
+    background-color: #F7F7F7;
+}
+.expired {
+    padding: 30%;
+     background: red;
+     border-radius: 20px;
+     display: none;
+}
+.brd {
+    /*height: 70vh;*/
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 1px 1px 20px 7px #d4d4d4;
+    padding-top: 10%;
+   
+}
+.select {
+    /*display: none;*/
+}
+.crypt-net {
+    margin-top: 20%;
+}
+.crypto{
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px;
+}
+.crypto:hover{
+    border:1px solid rgb(124, 217, 243)
+}
+.clicked {
+    background-color: rgb(124, 217, 243);
+}
+.crypto .col-10{
+    text-align: left;
+}
+.ntw .col-8{
+    text-align: left;
+}
+.currency {
+    display: none;
+}
+
+.payment .txt {
+    text-align: justify;
+}
+.payment {
+    padding: 40px;
+}
+.btn-wallet {
+    background-color: #72baff;
+    border: blue;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}
+i {
+    margin: 0px;
+    color: #838383;
+}
+.payment {
+    display: none;
+}
+
+@media screen and (min-width:1024px) {
+    .drop-dzn {
+        left: -19vw !important;
+        width: 80vw;
+    }
+    .col-lg-4 {
+        padding: 0px !important;
+    }
+    
+}

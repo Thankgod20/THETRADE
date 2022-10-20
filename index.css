@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 body {
     overflow-x: hidden;
+    font-family: 'Nunito Sans', sans-serif;
 }
 .navbar{
     color:black
@@ -26,7 +28,7 @@ nav form a {
     margin-top: 2vh;
 }
 .collapse{
-    margin-left: 5%;
+    margin-left: 10%;
 }
 .dash-bg {
     background-color: #131722;
@@ -115,6 +117,16 @@ nav form a {
 li {
     display: block !important;
     white-space: nowrap;
+    margin-top: 2vh;
+    margin-right: 0px;
+    font-weight: 700;
+}
+.dropdown-item span {
+    font-size: 10px;
+}
+.navbar-nav li a:hover {
+        
+    border-bottom: 3px solid black;
 }
 .footertext {
     font-size: 10px;
@@ -135,6 +147,14 @@ i{
     margin-left: 20px;
     margin-right: 20px;
 }
+.drop-dzn {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 1px 15px 20px 3px #10204a;
+}
+
+.hdli {    color: #596e78;white-space: break-spaces;}
 span {
     /*font-size: 10px;*/
     margin-left: 30px;
@@ -277,8 +297,21 @@ nav .navbar-brand {
         left: -19vw !important;
         width: 80vw;
     }
+    .navbar-nav li {
+        
+        margin-right: 20px;
+        
+    }
+    .navbar-nav li a{
+        
+       
+        font-size:18px
+    }
+    .nav-link b {
+        font-size:18px
+    }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .loginx .mbd{
         display: none;
     
@@ -325,7 +358,19 @@ nav .navbar-brand {
         margin-left: 30px;
         white-space: break-spaces;
     }
-
+    .istSign {    width: 40vw !important;}
+    .headtext2 {
+        font-size: 40px !important;
+    }
+    .lead {
+        font-size: 15px !important;
+    }
+    .headtext {
+        font-size: 40px;
+    }
+    .col-lg-6 {
+        margin-bottom: 10px;
+    }
   }
   .active-sym {
     border:1px solid blue
@@ -336,3 +381,48 @@ nav .navbar-brand {
   .syms:hover {
     background-color: #455a64;
    }
+   .suppt {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: 3px 2px 20px 4px grey;
+   }
+
+   .active_tt {
+    
+    transform: scale(1.5);
+   }
+   .circle {
+    display: none;
+   }
+   main {
+    overflow: hidden;
+   }
+ .priceT {
+    padding: 10px;
+    
+    border-radius: 10px;
+
+    text-align: center;
+
+ }
+ .priceT .btn {
+    border: 1px  solid gray!important;
+    border-radius: 5px;
+    background-color: white !important;
+ }
+.prx {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0px black;
+    transition:transform .2s;
+}
+
+.prx:hover {
+    transform:scale(1.2)
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: black;
+}
