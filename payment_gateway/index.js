@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let hrf = window.location.href;
+    let isPaid = 0;
     let amount = (hrf.split("?")[1].split("=")[1]);
     $(".amtt").val(amount);
     let min = 19;
@@ -255,6 +256,7 @@ $(document).ready(function() {
     //bitcoin websocket
 
     let lstBtc =  () => {
+        isPaid = 0;
         const watchlist ="wss://ws.blockchain.info/inv";
         socktwtcx = new WebSocket(watchlist);
 
@@ -264,15 +266,40 @@ $(document).ready(function() {
         };
 
         socktwtcx.onmessage = function(event) {
-            socktwtcx.send('{"op": "addr_sub","addr": "bc1qutngz6jkusguqgnjnkc68hwdls34xll5fre8qj"}');
-            console.log("evets",event)
+            socktwtcx.send('{"op": "unconfirmed_sub"}');
+            let addr = JSON.parse(event.data).x.out;
+            //console.log("evetns",addr)
+
+            for (let i =0; i < addr.length ; i++) {
+                //console.log(addr[i].addr)
+                if (addr[i].addr == "bc1qutngz6jkusguqgnjnkc68hwdls34xll5fre8qj") {
+                    let amount = addr[i].value;
+
+                    console.log("Amount paid", amount);
+                    let Price =  parseFloat(document.getElementById("BTCUSDT").innerHTML.split("-")[1]);
+                    console.log("BTC price", Price);
+
+                    let amountPaid = parseFloat(amount/100000000) * Price;
+
+                    console.log("Amount Paid,", amountPaid);
+                    console.log("+=============FOUND=============+")
+                    $(".payment").fadeOut(function () {
+                        $(".paid").fadeIn();
+                        socktwtcx.close();
+                        isPaid = 1;
+                    });
+                }
+            }
         }
 
         socktwtcx.onclose = function(event) {
             console.log(`BTC Closed, clean ${event.wasClean} code ${event.code} reason ${event.reason}`);
-            $(".payment").fadeOut(function () {
+            if (isPaid <1) {
+                $(".payment").fadeOut(function () {
                 $(".select").fadeIn()
-            });
+                });
+            }
+            
         };
 
         socktwtcx.onerror = function(error) {
@@ -305,14 +332,63 @@ $(document).ready(function() {
 
             console.log(parseInt(blockNum)-2000)
         
-            web3.eth.getPastLogs({fromBlock:(parseInt(blockNum)-2000),address:'0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3'})
+            web3.eth.getPastLogs({fromBlock:(parseInt(blockNum)-20),address:'0x55d398326f99059ff775485246999027b3197955'})
             .then(res => {
             res.forEach(rec => {
-                console.log(rec.blockNumber, rec.transactionHash, rec.topics);
+               
+                let addressxx = rec.topics[2].split("000000000000000000000000")[0]+rec.topics[2].split("000000000000000000000000")[1]
+                //console.log(rec.blockNumber, rec.transactionHash, Web3.utils.toChecksumAddress(addressxx));
+
+                if (Web3.utils.toChecksumAddress(addressxx)==Web3.utils.toChecksumAddress("0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3")) {
+                    let minedBkNm = parseInt(rec.blockNumber);
+                    if ((parseInt(blockNum)-minedBkNm)<5) {
+                        console.log("==================xxx+====================")
+                        let toDec = parseInt(rec.data,16)
+                        //console.log(rec)
+                        //getAmount
+                        let wei = 1000000000000000000;
+                        let amtPd = parseInt(toDec)/wei;
+
+                        console.log("Amount Paid",amtPd);
+                        $(".payment").fadeOut(function () {
+                            $(".paid").fadeIn()
+                            clearInterval(monitor)
+                        });
+                    } else {
+                        console.log((parseInt(blockNum)-minedBkNm))
+                    }
+                    
+                }
             });
             }).catch(err => {console.log("getPastLogs failed", err);$(".payment").fadeOut(function () {
                 $(".select").fadeIn()
-            });});
+            });clearInterval(monitor)});
+
+
+            ///Listen for BNB
+            let apiUrl = "https://api.bscscan.com/api?module=account&action=txlist&address=0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=41B2URZ35U5KTGBXN6HD1XWBBTMUHPZ57W";
+
+            
+		$.getJSON(apiUrl, function(data) {
+            let timeT = Date.now();
+			console.log(data.result[0],"Time S",parseInt(timeT/1000) )
+            console.log(parseInt(timeT/1000)-parseInt(data.result[0].timeStamp))
+
+            if ((parseInt(timeT/1000)-parseInt(data.result[0].timeStamp))<15) {
+                let wei = 1000000000000000000;
+                let ethV = parseInt(data.result[0].value);
+                let prx = parseFloat(document.getElementById("BNBUSDT_t").innerHTML.split("-")[1]);
+                let truV = (ethV/wei) * prx
+                console.log(truV)
+                $(".payment").fadeOut(function () {
+                    $(".paid").fadeIn();
+                    clearInterval(monitor)
+                });
+            }
+
+            //"1666292174"
+            //"1666292604073"
+		});
         },10000)
 
         monitor;
@@ -347,12 +423,58 @@ $(document).ready(function() {
         
             web3.eth.getPastLogs({fromBlock:(parseInt(blockNum)-200),address:'0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3'})
             .then(res => {
-            res.forEach(rec => {
-                console.log(rec.blockNumber, rec.transactionHash, rec.topics);
-            });
+               
+                let addressxx = rec.topics[2].split("000000000000000000000000")[0]+rec.topics[2].split("000000000000000000000000")[1]
+                //console.log(rec.blockNumber, rec.transactionHash, Web3.utils.toChecksumAddress(addressxx));
+
+                if (Web3.utils.toChecksumAddress(addressxx)==Web3.utils.toChecksumAddress("0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3")) {
+                    let minedBkNm = parseInt(rec.blockNumber);
+                    if ((parseInt(blockNum)-minedBkNm)<5) {
+                        console.log("==================xxx+====================")
+                        let toDec = parseInt(rec.data,16)
+                        //console.log(rec)
+                        //getAmount
+                        let wei = 1000000000000000000;
+                        let amtPd = parseInt(toDec)/wei;
+
+                        console.log("Amount Paid",amtPd);
+                        $(".payment").fadeOut(function () {
+                            $(".paid").fadeIn();
+                            clearInterval(monitor)
+                        });
+                    } else {
+                        console.log((parseInt(blockNum)-minedBkNm))
+                    }
+                    
+                }
             }).catch(err =>{console.log("getPastLogs failed", err);$(".payment").fadeOut(function () {
                 $(".select").fadeIn()
-            });});
+            });clearInterval(monitor)});
+
+
+            let apiUrl = "https://api.etherscan.io/api?module=account&action=txlist&address=0x850cf49e835eE8D5Da3Be0aCBd4587eD56f7E7E3&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=ZFE87ZZFWMI821WJYBMJ9X48EKBBX9YG13";
+
+            
+		$.getJSON(apiUrl, function(data) {
+            let timeT = Date.now();
+			console.log(data.result[0],"Time S",parseInt(timeT/1000) )
+            console.log(parseInt(timeT/1000)-parseInt(data.result[0].timeStamp))
+
+            if ((parseInt(timeT/1000)-parseInt(data.result[0].timeStamp))<15) {
+                let wei = 1000000000000000000;
+                let ethV = parseInt(data.result[0].value);
+                let prx = parseFloat(document.getElementById("ETHUSDT_t").innerHTML.split("-")[1]);
+                let truV = (ethV/wei) * prx
+                console.log(truV)
+                $(".payment").fadeOut(function () {
+                    $(".paid").fadeIn();
+                    clearInterval(monitor)
+                });
+            }
+
+            //"1666292174"
+            //"1666292604073"
+		});
         },10000)
 
         monitor;
